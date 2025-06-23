@@ -17,8 +17,9 @@ AI Tools: Grok, ChatGPT, DeepSeek, Blackbox for planning, form validation, and c
 
 About Formspree
 Formspree is a third-party API service that enables static websites to handle form submissions without a backend server. In this project, Formspree processes adoption and contact form data, sending user-submitted messages directly to the admin’s email, ensuring efficient communication between adopters and shelters.
-Setup Instructions
 
+
+Setup Instructions
 Clone the repository:git clone https://github.com/patelkaushal1902/Pet-Adoption-Hub.git
 
 
@@ -39,7 +40,7 @@ Notes
 
 The live demo is hosted on a free domain (kingsrowcafe.rf.gd), shared for hosting purposes due to naming constraints.
 Formspree handles email notifications, eliminating the need for a PHP backend.
-AI tools (e.g., ChatGPT) were used to optimize JavaScript form validation and enhance development efficiency.
+AI tools (e.g., ChatGPT,) were used to optimize JavaScript form validation and enhance development efficiency.
 
 License
 MIT License
