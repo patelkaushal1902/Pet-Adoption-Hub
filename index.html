@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-natural fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="https://media.istockphoto.com/id/1148570769/vector/veterinary-clinic-vector-logo.jpg?s=612x612&w=0&k=20&c=soi94tMr2NiMQ9b9X48p4OMW3V2i7JlGORDfCNBEUSs=" alt="Pet Adoption Hub Logo" class="navbar-logo"> Pet Adoption Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Guest
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
+                            <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-natural w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-natural w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Contact Modal -->
+    <div class="modal fade" id="adoptionContactModal" tabindex="-1" aria-labelledby="adoptionContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adoptionContactModalLabel">Adoption Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="https://formspree.io/f/mrbqryje" method="POST" id="adoptionContactForm">
+                        <input type="hidden" name="_subject" value="New Adoption Request">
+                        <div class="mb-3">
+                            <label for="adoptionContactName" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="adoptionContactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adoptionContactEmail" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="adoptionContactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adoptionContactMessage" class="form-label">Message</label>
+                            <textarea name="message" class="form-control" id="adoptionContactMessage" rows="3" required></textarea>
+                        </div>
+                        <input type="checkbox" name="_botcheck" class="hidden" style="display: none;">
+                        <button type="submit" class="btn btn-natural w-100">Submit Adoption Request</button>
+                    </form>
+                    <div id="adoptionContactResponse" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <div class="container mt-5 pt-5" id="home">
+        <h1 class="text-center mb-4 text-white">Welcome to Pet Adoption Hub</h1>
+
+        <!-- Filters -->
+        <div class="mb-4 bg-light p-4 rounded shadow">
+            <h4>Find Your Perfect Pet</h4>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <select id="typeFilter" class="form-select">
+                        <option value="all">All Types</option>
+                        <option value="dog">Dogs</option>
+                        <option value="cat">Cats</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <select id="breedFilter" class="form-select">
+                        <option value="all">All Breeds</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="germanshepherd">German Shepherd</option>
+                        <option value="beagle">Beagle</option>
+                        <option value="goldenretriever">Golden Retriever</option>
+                        <option value="bulldog">Bulldog</option>
+                        <option value="rottweiler">Rottweiler</option>
+                        <option value="persian">Persian</option>
+                        <option value="siamese">Siamese</option>
+                        <option value="mainecoon">Maine Coon</option>
+                        <option value="ragdoll">Ragdoll</option>
+                        <option value="britishshorthair">British Shorthair</option>
+                        <option value="abyssinian">Abyssinian</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <button id="resetFilters" class="btn btn-secondary w-100">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pet Cards -->
+        <div id="petList" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
+        <!-- Wishlist -->
+        <div class="mt-5 bg-light p-4 rounded shadow">
+            <h4>Your Wishlist</h4>
+            <ul id="wishlist" class="list-group"></ul>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="container mt-5" id="gallery">
+        <h2 class="text-center mb-4 text-white">Pet Gallery</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/4587971/pexels-photo-4587971.jpeg" class="card-img-top" alt="Joyful Dogs">
+                    <div class="card-body">
+                        <p class="card-text">Joyful Dogs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg" class="card-img-top" alt="Playful Cats">
+                    <div class="card-body">
+                        <p class="card-text">Playful Cats</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/1643456/pexels-photo-1643456.jpeg" class="card-img-top" alt="Pet Bonding">
+                    <div class="card-body">
+                        <p class="card-text">Pet Bonding</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg" class="card-img-top" alt="Curious Kittens">
+                    <div class="card-body">
+                        <p class="card-text">Curious Kittens</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg" class="card-img-top" alt="Loyal Dogs">
+                    <div class="card-body">
+                        <p class="card-text">Loyal Dogs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow">
+                    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" class="card-img-top" alt="Happy Pets">
+                    <div class="card-body">
+                        <p class="card-text">Happy Pets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="container mt-5" id="about">
+        <h2 class="text-center mb-4 text-white">About Us</h2>
+        <div class="bg-light p-4 rounded shadow">
+            <p>At Pet Adoption Hub, we’re passionate about finding loving homes for pets in need. Founded in 2020, we rescue and rehabilitate dogs and cats, providing top-notch veterinary care and training before matching them with families.</p>
+            <p>Our adoption process ensures every pet finds the perfect home through careful vetting, temperament assessments, and personalized matching with families. With over 50 years of combined experience, our team—including certified behaviorists and dedicated foster volunteers—works tirelessly to prepare pets for their new lives. We’ve pioneered community outreach programs, like free spay/neuter clinics and pet care workshops, to promote responsible pet ownership and reduce shelter overcrowding.</p>
+            <p>Our team of experienced vets, trainers, and volunteers has facilitated over 500 adoptions across multiple regions. We offer care guides and follow-up support to ensure every pet thrives in their new home. Join us in our mission to give every pet a forever family!</p>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div class="container mt-5" id="contact">
+        <h2 class="text-center mb-4 text-white">Contact Us</h2>
+        <div class="bg-light p-4 rounded shadow">
+            <p>Reach out for adoption inquiries or support:</p>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><strong>Email:</strong> info@petadoptionhub.com</li>
+                <li class="list-group-item"><strong>Phone:</strong> +1-800-PET-ADOPT (738-2367)</li>
+                <li class="list-group-item address-field"><strong>Address:</strong> 123 Pet Lane, Animal City, AC 12345</li>
+            </ul>
+            <form action="https://formspree.io/f/mrbqryje" method="POST" id="contactForm">
+                <input type="hidden" name="_subject" value="New Contact Form Submission">
+                <div class="mb-3">
+                    <label for="contactName" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="contactName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contactEmail" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="contactEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contactMessage" class="form-label">Message</label>
+                    <textarea name="message" class="form-control" id="contactMessage" rows="3" required></textarea>
+                </div>
+                <input type="checkbox" name="_botcheck" class="hidden" style="display: none;">
+                <button type="submit" class="btn btn-natural w-100">Send Message</button>
+            </form>
+            <div id="contactResponse" class="mt-3"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-natural text-white text-center py-3 mt-5">
+        <p>© 2025 Pet Adoption Hub. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
